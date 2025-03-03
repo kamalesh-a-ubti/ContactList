@@ -39,6 +39,7 @@ namespace ContactList.model.Services
             {
                 // Handle any exceptions that occur during the addition of the contact.
                 Console.WriteLine($"Error adding contact: {ex.Message}");
+                ContactList.Services.Logger.log(ex.Message);
                 return false;
             }
         }
@@ -60,6 +61,7 @@ namespace ContactList.model.Services
             {
                 // Handle any exceptions that occur during the retrieval of contacts.
                 Console.WriteLine($"Error retrieving contacts: {ex.Message}");
+                ContactList.Services.Logger.log(ex.Message);
                 return new List<Contact>();
             }
         }
@@ -98,6 +100,7 @@ namespace ContactList.model.Services
             {
                 // Handle any exceptions that occur during the update of the contact.
                 Console.WriteLine($"Error updating contact: {ex.Message}");
+                ContactList.Services.Logger.log(ex.Message);
                 return false;
             }
         }
@@ -127,6 +130,7 @@ namespace ContactList.model.Services
             {
                 // Handle any exceptions that occur during the deletion of the contact.
                 Console.WriteLine($"Error deleting contact: {ex.Message}");
+                ContactList.Services.Logger.log(ex.Message);
                 return false;
             }
         }
@@ -153,6 +157,7 @@ namespace ContactList.model.Services
             {
                 // Handle any exceptions that occur during the search for contacts.
                 Console.WriteLine($"Search error: {ex.Message}");
+                ContactList.Services.Logger.log(ex.Message);
                 return new List<Contact>();
             }
         }

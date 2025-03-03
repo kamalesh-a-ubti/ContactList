@@ -35,7 +35,9 @@ namespace ContactList.model.Services
             {
                 // Handle any SQLite exceptions that occur during registration.
                 Console.WriteLine($"Registration failed: {ex.Message}");
+                ContactList.Services.Logger.log(ex.Message);
                 return false;
+                
             }
         }
 
@@ -59,6 +61,7 @@ namespace ContactList.model.Services
             {
                 // Handle any exceptions that occur during login.
                 Console.WriteLine($"Login Error: {ex.Message}");
+                ContactList.Services.Logger.log(ex.Message);
                 return false;
             }
         }

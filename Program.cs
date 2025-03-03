@@ -6,6 +6,7 @@ using ContactList.model;
 using ContactList.model.Enums;
 using ContactList.model.Services;
 using ContactList.model.Utilities;
+using ContactList.Services;
 
 namespace ContactList{
     class Program{
@@ -30,6 +31,8 @@ namespace ContactList{
             {
                 // Handle any critical errors that occur during execution.
                 Console.WriteLine($"Critical error: {ex.Message}");
+                Logger.log(ex.Message);
+
             }
         }
 
@@ -178,6 +181,7 @@ namespace ContactList{
                     // Inform the user if an operation fails.
                     Console.WriteLine($"Operation failed: {ex.Message}");
                     Console.ReadKey();
+                    Logger.log(ex.Message);
                 }
             }
         }
@@ -346,6 +350,7 @@ namespace ContactList{
                 {
                     // Inform the user of invalid input and prompt again.
                     Console.WriteLine("Invalid input. Please try again.");
+                    Logger.log("Invalid input");
                 }
             }
         }
