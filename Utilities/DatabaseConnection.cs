@@ -43,7 +43,7 @@ namespace ContactList.model.Utilities
                 Id INTEGER PRIMARY KEY AUTOINCREMENT,
                 UserId INTEGER NOT NULL,
                 Name TEXT NOT NULL,
-                Phone TEXT,
+                PhoneNO TEXT,
                 FOREIGN KEY(UserId) REFERENCES Users(Id)
             )");
         }

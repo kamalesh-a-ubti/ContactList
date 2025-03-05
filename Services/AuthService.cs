@@ -42,7 +42,7 @@ namespace ContactList.model.Services
         }
 
         // Method to login a user with a username and password.
-        public bool Login(string username, string password)
+        public  bool Login(string username, string password)
         {
             try
             {
