@@ -51,11 +51,13 @@ namespace ContactList.model.Services
             {
                 // Establish a connection to the database.
                 using var connection = DatabaseConnection.GetConnection();
-                
+                connection.Open();
+
                 // Query the Contacts table for all contacts belonging to the current user.
                 return [.. connection.Query<Contact>(
                     "SELECT * FROM Contacts WHERE UserId = @UserId",
                     new { UserId = _currentUserId })];
+
             }
             catch (Exception ex)
             {

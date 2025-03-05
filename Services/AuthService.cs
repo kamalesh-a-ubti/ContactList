@@ -42,7 +42,7 @@ namespace ContactList.model.Services
         }
 
         // Method to login a user with a username and password.
-        public  bool Login(string username, string password)
+        public async Task<bool> Login(string username, string password)
         {
             try
             {
@@ -50,7 +50,7 @@ namespace ContactList.model.Services
                 using var connection = DatabaseConnection.GetConnection();
 
                 // Query the Users table for a user with the provided username and password.
-                CurrentUser = connection.QueryFirstOrDefault<User>(
+                CurrentUser =await connection.QueryFirstOrDefaultAsync<User>(
                     "SELECT * FROM Users WHERE Username = @Username AND Password = @Password",
                     new { Username = username, Password = password });
 

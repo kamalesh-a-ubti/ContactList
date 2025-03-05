@@ -21,7 +21,7 @@ namespace ContactList.model.Utilities
         }
 
         // Method to initialize the database by creating necessary tables.
-        public static void IntializeDatabase()
+        public static async Task IntializeDatabase()
         {
             // Establish a connection to the database.
             using var connection = GetConnection();
@@ -30,7 +30,7 @@ namespace ContactList.model.Utilities
             connection.Open();
 
             // Create the Users table if it does not exist.
-            connection.Execute(@"
+            await connection.ExecuteAsync(@"
                 CREATE TABLE IF NOT EXISTS Users(
                 Id INTEGER PRIMARY KEY AUTOINCREMENT,
                 Username TEXT UNIQUE NOT NULL,
@@ -38,7 +38,7 @@ namespace ContactList.model.Utilities
             )");
 
             // Create the Contacts table if it does not exist.
-            connection.Execute(@"
+            await connection.ExecuteAsync(@"
                 CREATE TABLE IF NOT EXISTS Contacts (
                 Id INTEGER PRIMARY KEY AUTOINCREMENT,
                 UserId INTEGER NOT NULL,

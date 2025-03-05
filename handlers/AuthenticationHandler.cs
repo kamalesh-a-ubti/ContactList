@@ -20,7 +20,7 @@ namespace ContactList.handlers
         }
 
         // Method to handle user authentication.
-        public bool HandleAuthentication()
+        public async Task<bool> HandleAuthentication()
         {
             while (true)
             {
@@ -37,11 +37,11 @@ namespace ContactList.handlers
                 {
                     case 1:
                         // Handle login and return true if successful.
-                        if (HandleLogin()) return true;
+                        if (await HandleLogin()) return true;
                         break;
                     case 2:
                         // Handle registration and return true if successful.
-                        if (HandleRegistration()) return true;
+                        if (await HandleRegistration()) return true;
                         break;
                     case 3:
                         // Exit the application.
@@ -55,7 +55,7 @@ namespace ContactList.handlers
         }
 
         // Method to handle user login.
-        private  bool HandleLogin()
+        private async Task<bool> HandleLogin()
         {
             Console.Clear();
             Console.WriteLine("=== Login ===");
@@ -65,7 +65,7 @@ namespace ContactList.handlers
             var password = GetValidInput("Password: ", s => s.Trim());
 
             // Attempt to login with the provided credentials.
-            if (_authService.Login(username, password))
+            if (await _authService.Login(username, password))
             {
                 Console.WriteLine($"\nWelcome {username}!");
                 Console.ReadKey();
@@ -78,7 +78,7 @@ namespace ContactList.handlers
             return false;
         }
         // Method to handle user registration.
-        private bool HandleRegistration()
+        private async Task<bool> HandleRegistration()
         {
             Console.Clear();
             Console.WriteLine("=== Registration ===");
@@ -102,7 +102,7 @@ namespace ContactList.handlers
             {
                 Console.WriteLine("\nRegistration successful! Please login.");
                 Console.ReadKey();
-                return HandleLogin();
+                return await HandleLogin();
             }
 
             // Inform the user if registration fails.
