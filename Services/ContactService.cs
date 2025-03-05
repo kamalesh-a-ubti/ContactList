@@ -29,7 +29,7 @@ namespace ContactList.model.Services
                 
                 // Insert the new contact into the Contacts table.
                 var result = connection.Execute(
-                    "INSERT INTO Contacts (UserId, Name, Phone) VALUES (@UserId, @Name, @PhoneNo)",
+                    "INSERT INTO Contacts (UserId, Name, PhoneNo) VALUES (@UserId, @Name, @PhoneNo)",
                     new { UserId = _currentUserId, contact.Name, contact.PhoneNo });
                 
                 // Return true if the contact was successfully added.
@@ -78,7 +78,7 @@ namespace ContactList.model.Services
                 var affectedRows = connection.Execute(
                     @"UPDATE Contacts SET
                         Name = @Name,
-                        Phone = @PhoneNo
+                        PhoneNo = @PhoneNo
                     WHERE Id = @ContactId AND UserId = @UserId",
                     new
                     {
@@ -146,7 +146,7 @@ namespace ContactList.model.Services
                 // Query the Contacts table for contacts matching the search term.
                 return connection.Query<Contact>(
                     @"SELECT * FROM Contacts WHERE UserId = @UserId AND 
-                    (Name LIKE @SearchTerm OR Phone LIKE @SearchTerm)",
+                    (Name LIKE @SearchTerm OR PhoneNo LIKE @SearchTerm)",
                     new
                     {
                         UserId = _currentUserId,

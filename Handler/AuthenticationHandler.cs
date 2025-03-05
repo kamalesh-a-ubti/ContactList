@@ -9,9 +9,7 @@ namespace ContactList.Handler
 {
     public class AuthenticationHandler
     {
-        // field to hold an instance of AuthService, nullable.
         private readonly AuthService _authService;
-
         //Constructor used to get the authservice 
         public AuthenticationHandler(AuthService authService)
         {

@@ -5,3 +5,4 @@
 03-03-2025 10:45:35 :Object reference not set to an instance of an object.
 03-03-2025 11:03:11 :Object reference not set to an instance of an object.
 03-03-2025 11:10:06 :Object reference not set to an instance of an object.
+05-03-2025 18:19:45 :SQLite Error 1: 'table Contacts has no column named Phone'.
